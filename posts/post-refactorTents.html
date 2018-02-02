@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dev Blog - Refactorting The Tentacles</title>
+    
+    <link rel="icon" href="/img/Squid_Icon.png">
+    <link rel="shortcut icon" href="/img/Squid_Icon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/clean-blog.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+       	<a href="https://gwamm.github.io/" target="_blank"><img class="navbar" src="../img/DAWN_OF_THE_CELESTIALPOD_TITLE - small.png"></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Blog Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://gwamm.github.io" target="_blank">Our Website</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('../img/header.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Refactoring The Tentacles</h1>
+              <h2 class="subheading">Our tentacles had to undergo a major overhaul to get to where they are today.</h2>
+              <span class="meta">By
+                <a href="https://tylerchermely.com/blog/" target="_blank">Tyler Chermely</a>
+                on February 2nd, 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>During the week of October 22nd 2017, I was focused on refining movement and fixing the tentacles. Over the past few weeks, we’ve realized the first implementation of the tentacles was very temporary with them stretching and deforming the mesh a ton. This distracted the players, negating the utility they provide. Another thing is that players tend to have a ton of issues with movement in the game. We decided to try a new approach as suggested by my capstone professor.</p>
+
+            <p>I spoke with Professor Dan about how I could remake the tentacle system to where I have full control of how they look/feel when in action. I also wanted them to be very tweakable so that a designer could tweak them into perfection. He responded with a very clever solution and I will explain how I implemented it in the next few paragraphs.</p>
+
+            <p>First, I needed to implement my own spring joints since the base system didn’t cut it. Mine would still act with Unity’s physics; however, I could make them bidirectional so the forces would be combined. I used Hooke’s law to implement these. I found they only retained the springiness when using Rigidbody.AddForce rather than Rigidbody.MovePosition.  Next, I needed to create a catmull rom spline through the joints. I would then need to sample on the spline based on the number of edge vertices that are on each side. From these positions, I could find the line perpendicular to that sample point, and add it to a vector of new triangle positions. The resulting list of positions is the new vertex positions. This will eventually be moved into a shader, but the current result is a mesh that is fully and accurately skinned with custom spring joints.</p>
+
+           
+            <a href="#">
+              <img class="img-fluid" src="../img/squidDebug.png" alt="">
+            </a>
+            <span class="caption text-muted">The long line going through the tentacles represents the catmull rom spline. The small lines represent the samples on the spline and where the vertices were moved. The green boxes represent the colliders on the tentacles.</span>
+           
+            <p>The hardest part was getting it to feel good and implementing the mechanics. I originally put everything together and spent hours trying to brute-force it. My professor Dan suggested I work with as little as possible and slowly build up instead. So, I started with just the joints and the springs without the body.  Once I had that down, I was able to add the body in and get the physics working nicely for that. When I worked with so few parts, I was able to get the numbers I wanted for everything much faster. Eventually I got it to a point where I was happy and implemented the tentacle collision along with the other mechanics. Now the squid has 4 tentacles happily following it.</p>
+
+            <p>The next big task I worked on was having the player rotate to face the mouse and thrust towards it rather. I started by just plainly having it rotate, yet this caused many bugs including the tentacles getting torn out of the body. To prevent this, I needed to rotate it using only physics. To do this, I have a script calculates the target rotation to face the mouse every frame. It only calculates a rotation that is slightly towards this new rotation. It then gets the angle between this new rotation and the current rotation. The resulting angle is passed into the Rigidbody.AddTorque to which it is rotated over time using physics. The bug went away after this. Thankfully, the player thrusting towards the mouse was much easier to implement than the tentacles.</p>
+
+            <a href="#">
+              <img class="img-fluid" src="../img/refactorEndImage.png" alt="">
+            </a>
+            <span class="caption text-muted">Buttery smooth tentacles!</span>
+			
+         	<p>Thanks for reading! Connect with us on Twitter, Facebook, or YouTube. To make sure you stay up to date, sign up for our email list!</p>
+         	
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p class="copyright text-muted">Copyright &copy; <a href="https:gwamm.github.io" target="_blank">celestialpod.com</a> 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
