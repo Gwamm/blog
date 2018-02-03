@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dev Blog - Refactorting The Tentacles</title>
+    
+    <link rel="icon" href="/img/Squid_Icon.png">
+    <link rel="shortcut icon" href="/img/Squid_Icon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/clean-blog.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+       	<a href="https://gwamm.github.io/blog/index.html" target="_blank"><img class="navbar" src="../img/DAWN_OF_THE_CELESTIALPOD_TITLE - small.png" alt=""></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Blog Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://gwamm.github.io" target="_blank">Our Website</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('../img/header.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Squids Can Move In Space?!</h1>
+              <h2 class="subheading">Last semester we started the creation of QA analysis tools. Josh has immediately put these to use in determining the next steps we need to take.</h2>
+              <span class="meta">By
+                <a href="https://joshua-gg.tumblr.com/" target="_blank">Joshua Bernstein</a>
+                on February 2nd, 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>So, over the past week, I’ve been mainly organizing all the research and data into relevant insights. As of right now, we have completed four research / testing sessions. The first two of which, have been user groups, collecting mostly qualitative feedback, although thanks to our tools programmer, we also have access to detailed heatmaps of the levels.</p>
+
+			<p>Check this one out:</p>
+			
+			<a href="#">
+              <img class="img-fluid" src="../img/4Heatmap.png" alt="">
+            </a>
+			
+            <p>This is the position of every splat or place a tentacle touched in what is currently level 4 - ‘Lava Lamp’. From this we can see common strategies, as well as where some players may have experienced more difficulty than others. Cross referencing this heat map with the deaths, or thrusts of the level, and we can tell that the middle horizontal hallway is where most players have trouble.</p>
+
+            <p>This is only part of the attitudinal / behavioral feedback we have collected. This past week we decided to start using Google Forms again to collect responses.</p>
+			  
+            <a href="#">
+              <img class="img-fluid" src="../img/controlQA.jpg" alt="">
+            </a>
+            
+            <p>Although this was from a small sample size, it still gives us an insight into our controls being below average. Upon cross referencing this data with reliable comments from our user group sessions, plus other data results, like overall enjoyment, difficulty, and our most important rating, ‘squid feel,’ I found that overall, players thought that the game made sense, but without a proper tutorial they are missing vital knowledge that would help them complete levels. In addition, the responsiveness of the controls is detracting from the tight mechanics the game emphasizes.</p>
+
+            <p>I’ve already written up some recommendations about how to address these problems. Last test session, we decided to A/B test two different control schemes, (as tentacles were used with the Q and E buttons), I thought it would make more sense for tentacles to be mapped to the left and right mouse buttons, as they are aimed and controlled with the mouse position. We adjusted the control scheme and I am proud to report that players felt they could control the squid better, with the mouse controls. This in turn bumps the average of the control stat displayed above by 9%. A good start for a quick change, but there is still lots more to do. </p>
+
+			<p>I am incredibly excited about the changes to come, and the data to be yielded!
+			  </p>
+			  
+         	<p>Thanks for reading! Connect with us on Twitter, Facebook, or YouTube. To make sure you stay up to date, sign up for our email list!</p>
+         	
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p class="copyright text-muted">Copyright &copy; <a href="https:gwamm.github.io" target="_blank">celestialpod.com</a> 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
