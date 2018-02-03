@@ -81,13 +81,13 @@ img::-moz-selection {
 #mainNav {
   position: absolute;
   border-bottom: 1px solid #e9ecef;
-  background-color: white;
+  background-color: #343a40;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #mainNav .navbar-brand {
   font-weight: 800;
-  color: #343a40;
+  color: white;
 }
 
 #mainNav .navbar-toggler {
