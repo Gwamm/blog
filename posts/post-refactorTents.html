@@ -89,7 +89,7 @@
             <p>The next big task I worked on was having the player rotate to face the mouse and thrust towards it rather. I started by just plainly having it rotate, yet this caused many bugs including the tentacles getting torn out of the body. To prevent this, I needed to rotate it using only physics. To do this, I have a script calculates the target rotation to face the mouse every frame. It only calculates a rotation that is slightly towards this new rotation. It then gets the angle between this new rotation and the current rotation. The resulting angle is passed into the Rigidbody.AddTorque to which it is rotated over time using physics. The bug went away after this. Thankfully, the player thrusting towards the mouse was much easier to implement than the tentacles.</p>
 
             <a href="#">
-              <img class="img-fluid" src="../img/refactorEndImage.png" alt="">
+              <img class="img-fluid" src="../img/SwingTentacles_Small.gif" alt="">
             </a>
             <span class="caption text-muted">Buttery smooth tentacles!</span>
 			
