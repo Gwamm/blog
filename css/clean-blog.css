@@ -418,3 +418,11 @@ footer .copyright {
   font-size: 16px;
   padding: 25px 35px;
 }
+
+pre code {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+ 
+}
