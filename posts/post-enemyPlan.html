@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dev Blog - Refactorting The Tentacles</title>
+    
+    <link rel="icon" href="/img/Squid_Icon.png">
+    <link rel="shortcut icon" href="/img/Squid_Icon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/clean-blog.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+		<a href="../index.html"><img class="navbar" src="../img/DAWN_OF_THE_CELESTIALPOD_TITLE - small.png" alt=""></a>
+        <button class="navbar-toggler navbar-dark navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <!--Menu (???)-->
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-dark navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Blog Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://gwamm.github.io" target="_blank">Our Website</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	  
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('../img/header.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Forward Thinking: Enemy AI Profiling</h1>
+              <h2 class="subheading">A peek into our early thought process around the AI enemies found in game.</h2>
+              <span class="meta">By
+                <a href="https://www.richieconti.com/capstone-blog-2nd-semester/" target="_blank">Richard Conti</a>
+                on March 31st, 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>Early on, our goal was to add three new mini-enemies to scatter around the levels. They should be unique, interesting, and add a specific challenge. A bunch of brainstorming was done, so that we had a couple different enemies to choose between. Here are our brief initial thoughts on each one.</p>
+			
+			  
+			<p><strong>SandDollar</strong> - Stationary enemy that explodes when player enters collision box attached to the prefab. Plays explosion VFX, damages surrounding walls (radius on a public variable), and applies force to player in the opposite direction (force on a public variable).</p>
+			  
+			<a href="#">
+              <img class="img-fluid" src="../img/AiProfiles/Jellyfish.png" alt="">
+            </a>
+			
+			<p><strong>Jellyfish</strong> - Floating enemy that bobs up and down (distance and speed of bob on public variables). The enemy should float between two set locations on loop (movement speed as a public variable). If the player collides with jellytentacles they take x damage and the player disconnects from any grabbed surface and can't use their tentacles for x seconds. Cannot currently be destroyed.</p>
+			
+			<a href="#">
+              <img class="img-fluid" src="../img/AiProfiles/variousEnemies.png" alt="">
+            </a>
+			  
+			<p><strong>Piranha</strong> - A swarm enemy that will chase after the player and chip away their health. These enemies have collision boxes and can push the player around. They have little health and can be killed with two uncharged laser shots. </p>
+			  
+			<p><strong>State:</strong> <i>Seeking</i> - The swarm will seek out the player once the player enters a specific collision box. They will continue to chase the player outside of the collision box once locked on. The speed that they search out the player should be a public variable. There should be a “front” to the enemy which points at the player at all times (that way the “Face” of the piranha is the one colliding with the player). If the piranha collides with the player it should do x damage (variable) and then back off for x seconds (variable), until trying to collide (attack) again.</p>
+			  
+			<p><strong>State:</strong> <i>Roaming</i> - The enemies will “float” around inside a specified area randomly. The speed and distance which they roam should be public variables.</p>
+			  
+			<p>In addition to these new enemies, Josh and I also began designing the boss sequence. First, we needed to figure out how the boss would be defeated - and the steps the player needs to take to get there. The boss will have multiple phases, and the player will need to release starfish that are in capsules attached to it's head. After releasing the starfish, the shield on the boss drops and allows the player to shoot it in the weak point - the eye. They also get to tear a tentacle off the boss, sending it to it's next phase. The fight overview goes as follows:</p>
+			  
+			<h3>BOSS STRUCTURE:</h3>
+			
+			<a href="#">
+              <img class="img-fluid" src="../img/AiProfiles/BossQuandrants.png" alt="">
+            </a>  
+			  
+			<p><strong>Phase 1: </strong><i>Pull Lid 1, Laser Eye, Pull Lid 2, Laser Eye, S4 gets stunned, Pull off tentacle.</i></p>
+			  
+			<p><strong>Phase 2: </strong><i>Pull Lid 3, Laser Eye, Pull Lid 4, Laser Eye, S4 gets stunned, Pull off tentacle.</i></p>
+			  
+			<p><strong>Intermission: </strong><i>Player Rest - S4 Feigns Death - Enter Rage Mode - Enter Phase 3.</i></p>
+			  
+			<p><strong>Phase 3: </strong><i>Pull Lid 5, Laser Eye (Eye gets destroyed).</i></p>
+			  
+			<p><strong>Escape: </strong><i>Start self destruct sequence - Get out of the ship!</i></p>
+			  
+			<p>The boss also needs to react based on the players location, so we designed a quadrant based system, so that specific attacks can activate based on the players location to the boss. A lot of work still needs to be done, but this is a good headstart.</p>
+			
+			<p>Thanks for reading! Connect with us on <a href="https://twitter.com/GwammStudio">Twitter</a>, <a href="https://www.facebook.com/GwammStudio/">Facebook</a>, or <a href="https://www.youtube.com/channel/UCUE2Oqo1IhhPF6MW4JZEHtg?view_as=subscriber">YouTube</a>. To make sure you stay up to date, <a href="http://eepurl.com/c9q5zj">sign up for our email list!</a></p>
+                  	
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p class="copyright text-muted">Copyright &copy; <a href="https:gwamm.github.io" target="_blank">celestialpod.com</a> 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
