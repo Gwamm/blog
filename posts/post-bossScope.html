@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dev Blog - Refactorting The Tentacles</title>
+    
+    <link rel="icon" href="/img/Squid_Icon.png">
+    <link rel="shortcut icon" href="/img/Squid_Icon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/clean-blog.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+		<a href="../index.html"><img class="navbar" src="../img/DAWN_OF_THE_CELESTIALPOD_TITLE - small.png" alt=""></a>
+        <button class="navbar-toggler navbar-dark navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <!--Menu (???)-->
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-dark navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Blog Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://gwamm.github.io" target="_blank">Our Website</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	  
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('../img/header.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Scoping out Bosses</h1>
+              <h2 class="subheading">Before we started develping the boss, we needed to figure out our goals for the experience.</h2>
+              <span class="meta">By
+                <a href="https://joshua-gg.tumblr.com/" target="_blank">Joshua Bernstein</a>
+                on April 7th, 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>Ever since Celestialpod was teased to the public back in November, there has always been this idea of a final boss fight.</p>
+			  
+			<p>(You can skip to 1:53 in the video to see the boss concept)</p>
+	
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/iCmnw9alyx8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+			  
+			<p>It’s really exciting, but at the same time, being first time boss developers, the potential and difficulty of this ‘epic’ task is gigantic compared to (probably) everything the team has done before. That being said, as this upcoming week is the first official week of ‘production’ as we are given the greenlight, I thought I would talk about some of the challenges and difficulties of designing a boss for the first time.</p>
+			  
+			<p>Since we already had some concept art, the first thing we did was brainstorm a bunch of ideas about how the player might kill this gigantic robot squid. What we came up with we feel culminates the essence of the game, maneuvering around obstacles, formulating a plan, and then blowing things up.</p>
+			  
+			<p>To put it simply, and to help us, and our team, tackle the mechanics we have chosen, we broke the squid down into 3 phases, but I’m getting ahead of myself; before we knew how the enemy was going to attack, we needed to know how the player would kill it. What we decided on was giving the squid a few points of weakness: the eye, the pods, and the tentacles. Each of these serves a purpose in the fight, for instance, the eye is the main source of power, to defeat the squid you will have to destroy the eye, the only problem is it’s shielded by 5 Starfish Pods that render the eye invulnerable. The pods are positioned on top of the squid, so that the player has to maneuver around the tentacles attacks in order to deactivate the shields around the eye.</p>
+			  
+			<a href="#">
+              <img class="img-fluid" src="../img/bossQuintiles.PNG" alt="">
+            </a>
+			  
+			<p>With this in mind, we started to develop a model of how the boss would be structured, as well as it’s attacks. The boss wants you to be below it at all times, going from the sketch, we broke it up into 4 quadrants (we then added a fifth, which technically doesn’t make them quadrants anymore, but we needed a representation of an out of range behavior). Basically, the boss will try to keep the player in Q1 where it can easily deal some damage to the player. The rest of the quadrants provide similar behaviors, but we set them up to provide a language for talking about attacks. For instance, the attack “Tentacle Swoop” reaches up into Q2 and Q4 and pushes players downward into Q1.</p>
+			  
+			<p>Now this is all great, we have a language, we know how the boss theoretically works, but something was still missing: beats! We looked at a bunch of different boss battles, and we found that they all followed some formula of building suspense, increasing the challenge, letting the player rest, and then turning it up to 11, before the narrative crescendo. For us, this meant the battle and everything leading up to the boss was a story. The story outside of the boss is a blog post for another time, but for the boss, we came up with disarming attack-tentacles, saving your starfish friends, and blowing up the eye, only to find an angrier, deadlier, robot squid malfunctioning in order to destroy you.</p>
+			  
+			<p>This was the initial design we decided on, and I can’t wait to see how it changes, but I think for the huge task we started on, we have significantly made it easier for our team to tackle this epic task.</p>
+			
+			<p>Thanks for reading! Connect with us on <a href="https://twitter.com/GwammStudio">Twitter</a>, <a href="https://www.facebook.com/GwammStudio/">Facebook</a>, or <a href="https://www.youtube.com/channel/UCUE2Oqo1IhhPF6MW4JZEHtg?view_as=subscriber">YouTube</a>. To make sure you stay up to date, <a href="http://eepurl.com/c9q5zj">sign up for our email list!</a></p>
+                  	
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p class="copyright text-muted">Copyright &copy; <a href="https:gwamm.github.io" target="_blank">celestialpod.com</a> 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
