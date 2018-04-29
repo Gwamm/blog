@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dev Blog - Refactorting The Tentacles</title>
+    
+    <link rel="icon" href="/img/Squid_Icon.png">
+    <link rel="shortcut icon" href="/img/Squid_Icon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/clean-blog.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+		<a href="../index.html"><img class="navbar" src="../img/DAWN_OF_THE_CELESTIALPOD_TITLE - small.png" alt=""></a>
+        <button class="navbar-toggler navbar-dark navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <!--Menu (???)-->
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-dark navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Blog Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://gwamm.github.io" target="_blank">Our Website</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	  
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('../img/header.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>The Tentacle Problem</h1>
+              <h2 class="subheading">One of the hardest problems to tackle was teaching players the value of their tentacles.</h2>
+              <span class="meta">By
+                <a href="https://joshuagad.myportfolio.com/celestialpod" target="_blank">Joshua Bernstein</a>
+                on April 28th, 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+           				<p>Celestialpod is a challenging experience. I was brought on to <strong>teach players the precise controls</strong>, as well as smooth out the difficulty curve throughout the levels. In doing so, I would <strong>improve the user experience</strong> by updating the user interface and feedback systems. In addition, I designed some of the enemies and boss behaviors, as well as the dialogue system and narrative-cinematic gameplay beats.</p>
+                        <br>
+						<br>
+
+						<h3>Research</h3>
+						
+						<p>To better understand the learning curve of the game and what players thought of the tentacle-based movement system, I selected <strong>User Groups</strong> as the primary method of research. As we already had a <strong>behavioral data collection</strong> solution, user group perceptions would help explain what players thought of the challenging controls, and where the game exceeded or failed expectations. I could then cross reference what players said, versus what they did with the behavioral telemetry, to find gaps in our knowledge, and critical problems with the game.</p>
+						
+						<a href="#">
+              				<img class="img-fluid" src="../img/TentacleProb/tentacles.gif" alt="">
+            			</a>
+						
+						<h3>Results</h3>
+						
+						<p>Players reported that they had a 'pretty good understanding of the controls,' however, they were missing vital knowledge that would improve their play, and lower difficulty at higher levels. In addition, I found that the user interface (top left) displaying health and thrust power, are barely utilized during gameplay.</p>
+						
+						<p>As for the controls, players found it hard to remember which tentacle was holding onto what. To help combat this, and make the controls more fluid with the mouse cursor, the left and right tentacles were rebound to their respective mouse buttons.</p>
+						
+						<h3>Problem and Solution</h3>
+						
+						<p>One major problem I encountered with the results, was the emphasis players put on their secondary movement ability 'Thrust', rather than the core ability that makes Celestialpod unique: 'Tentacles!'</p>
+						
+						<p>Let me show you, using our behavioral level heatmaps!</p>
+						
+						<a href="#">
+              				<img class="img-fluid" src="../img/TentacleProb/Level5Analysis.png" alt="">
+            			</a>
+						
+						<p>These two heatmaps show the relationship between tentacle usage. As you can see, thrust usage is used a lot more throughout this level, specifically in the large open area near the bottom of the level.</p>
+						
+						<p>Although this is not as ideal as we would like it to be, this is one of the more challenging levels and the team was fine with players using thrusters here, because the level is virtually impossible to complete once the player gets near the top of the map and has to curve their tentacles through tight corridors.</p>
+						
+						<a href="#">
+              				<img class="img-fluid" src="../img/TentacleProb/Level1Analysis.png" alt="">
+            			</a>
+						
+						<p>This kind of relationship we were not happy about as players were using thrust to an extreme. For a while this level was what players were thrown into as the introduction to the game. As you can see, players would pretty much only use thrust to get around the level. Players would fight with the thrust ability rather than learn to use tentacles.</p>
+						
+						<p><strong>So the problem was, 'how are we going to stop players from using thrust over tentacles?'</strong></p>
+						
+						<p>This had been an ongoing issue for a while, as over time the lead designer had continued to nerf the thrusting power to incentivize tentacles more.</p>
+						
+						<p><strong>The solution</strong> was pretty simple: we already had a plan for an ability upgrade system, so the obvious decision was to just <strong>remove the thrust ability from the tutorial level</strong>. This would force players to learn movement through the tentacles and pick up on some of the advanced tentacle movement early.</p>
+						
+						<a href="#">
+              				<img class="img-fluid" src="../img/TentacleProb/TutAnalysis.png" alt="">
+            			</a>
+						
+						<p>As you can see in the in-progress tutorial level, players are having a much easier time moving their tentacles. This also turned out to be a good thing for thrust, because as an upgrade, it can be a lot stronger and more useful then it was when it had been part of the starting abilities.</p>
+						
+						<p>These changes have led players to be more capable of tackling harder levels with their newly learned tentacle powers!</p>
+						<br>
+						<br>
+						
+						<p>This is how we’ve approached managing the time spent on the project over the course of its development. There have been some hiccups along the way, but for the most part we’ve been able to stay on a steady course. In retrospect, I feel like the area I put less effort into was the Individual Passion section. I relied heavily on my leads to encourage the team members, and I should have gotten more involved at regular intervals to keep up with members.</p>
+						
+						<p>Thankfully, we’ve still gotten to the point where we can confidently put it out on the market. At this point, we’re squashing bugs and going through the Steam onboarding process. So excited to release!</p>
+			
+			<p>Thanks for reading! Connect with us on <a href="https://twitter.com/GwammStudio">Twitter</a>, <a href="https://www.facebook.com/GwammStudio/">Facebook</a>, or <a href="https://www.youtube.com/channel/UCUE2Oqo1IhhPF6MW4JZEHtg?view_as=subscriber">YouTube</a>. To make sure you stay up to date, <a href="http://eepurl.com/c9q5zj">sign up for our email list!</a></p>
+                  	
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p class="copyright text-muted">Copyright &copy; <a href="https:gwamm.github.io" target="_blank">celestialpod.com</a> 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
